@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Optum Data Dashboard</title>
+
+	<!-- Global stylesheets -->
+	<link href="../../../assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
+	<link href="../../../assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/ltr/all.min.css" id="stylesheet" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css" integrity="...">
+
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script src="../../../assets/demo/demo_configurator.js"></script>
+	<script src="../../../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script src="../../../assets/js/vendor/visualization/d3/d3.min.js"></script>
+	<script src="../../../assets/js/vendor/visualization/d3/d3_tooltip.js"></script>
+
+	<script src="assets/js/app.js"></script>
+	<script src="../../../assets/demo/pages/dashboard.js"></script>
+	<script src="../../../assets/demo/charts/pages/dashboard/streamgraph.js"></script>
+	<script src="../../../assets/demo/charts/pages/dashboard/sparklines.js"></script>
+	<script src="../../../assets/demo/charts/pages/dashboard/lines.js"></script>	
+	<script src="../../../assets/demo/charts/pages/dashboard/areas.js"></script>
+	<script src="../../../assets/demo/charts/pages/dashboard/donuts.js"></script>
+	<script src="../../../assets/demo/charts/pages/dashboard/bars.js"></script>
+	<script src="../../../assets/demo/charts/pages/dashboard/progress.js"></script>
+	<script src="../../../assets/demo/charts/pages/dashboard/heatmaps.js"></script>
+	<script src="../../../assets/demo/charts/pages/dashboard/pies.js"></script>
+	<script src="../../../assets/demo/charts/pages/dashboard/bullets.js"></script>
+	<!-- /theme JS files -->
+
+</head>
+
+<body>
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-dark navbar-expand-lg navbar-static border-bottom border-bottom-white border-opacity-10">
+		<div class="container-fluid">
+			<div class="d-flex d-lg-none me-2">
+				<button type="button" class="navbar-toggler sidebar-mobile-main-toggle rounded-pill">
+					<i class="ph-list"></i>
+				</button>
+			</div>
+
+			<div class="navbar-brand ">
+				<a href="index.html" class="d-inline-flex align-items-center">
+					<img src="" alt=""><B>Optum</B> <span>&copy;</span>
+					<!--<img src="" height="45px" width="120px"  class="d-none d-sm-inline-block h-1px ms-3" alt="">
+					-->
+				</a>
+			</div>
+
+			<ul class="nav flex-row">
+				<li class="nav-item d-lg-none">
+					<a href="#navbar_search" class="navbar-nav-link navbar-nav-link-icon rounded-pill" data-bs-toggle="collapse">
+						<i class="ph-magnifying-glass"></i>
+					</a>
+				</li>
+
+				<li class="nav-item nav-item-dropdown-lg dropdown">
+					<a href="#" class="navbar-nav-link navbar-nav-link-icon rounded-pill" data-bs-toggle="dropdown">
+						<i class="ph-squares-four"></i>
+					</a>
+
+					<div class="dropdown-menu dropdown-menu-scrollable-sm wmin-lg-600 p-0">
+						<div class="d-flex align-items-center border-bottom p-3">
+							<h6 class="mb-0">Browse</h6>
+							<a href="#" class="ms-auto">
+								View all
+								<i class="ph-arrow-circle-right ms-1"></i>
+							</a>
+						</div>
+
+						<div class="row row-cols-1 row-cols-sm-2 g-0">
+							<div class="col">
+								<button type="button" class="dropdown-item text-wrap h-100 align-items-start border-end-sm border-bottom p-3">
+									<div>
+										<img src="https://demo.interface.club/limitless/demo/template/assets/images/demo/logos/1.svg" class="h-40px mb-2" alt="">
+										<div class="fw-semibold my-1">Client Information</div>
+										<div class="text-muted">Sub-Client data from multiple sources</div>
+									</div>
+								</button>
+							</div>
+
+							<div class="col">
+								<button type="button" class="dropdown-item text-wrap h-100 align-items-start border-bottom p-3">
+									<div>
+										<img src="https://demo.interface.club/limitless/demo/template/assets/images/demo/logos/2.svg" class="h-40px mb-2" alt="">
+										<div class="fw-semibold my-1">Resource Groups</div>
+										<div class="text-muted"></div>
+									</div>
+								</button>
+							</div>
+
+							<div class="col">
+								<button type="button" class="dropdown-item text-wrap h-100 align-items-start border-end-sm border-bottom border-bottom-sm-0 rounded-bottom-start p-3">
+									<div>
+										<img src="https://demo.interface.club/limitless/demo/template/assets/images/demo/logos/3.svg" class="h-40px mb-2" alt="">
+										<div class="fw-semibold my-1">Total Cost</div>
+										<div class="text-muted">Sub Category Cost</div>
+									</div>
+								</button>
+							</div>
+
+							<div class="col">
+								<button type="button" class="dropdown-item text-wrap h-100 align-items-start rounded-bottom-end p-3">
+									<div>
+										<img src="https://demo.interface.club/limitless/demo/template/assets/images/demo/logos/4.svg" class="h-40px mb-2" alt="">
+										<div class="fw-semibold my-1">Meter Sub Category</div>
+										<div class="text-muted"></div>
+									</div>
+								</button>
+							</div>
+						</div>
+					</div>
+				</li>
+
+				<li class="nav-item nav-item-dropdown-lg dropdown ms-lg-2">
+					
+					<div class="dropdown-menu wmin-lg-400 p-0">
+					
+						<div class="collapse" id="search_messages">
+							<div class="px-3 mb-2">
+								<div class="form-control-feedback form-control-feedback-start">
+									<input type="text" class="form-control" placeholder="Search messages">
+									<div class="form-control-feedback-icon">
+										<i class="ph-magnifying-glass"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="dropdown-menu-scrollable pb-2">
+							
+							
+						</div>
+
+						<div class="d-flex border-top py-2 px-3">
+							<a href="#" class="text-body">
+								<i class="ph-checks me-1"></i>
+								Dismiss all
+							</a>
+							<a href="#" class="text-body ms-auto">
+								View all
+								<i class="ph-arrow-circle-right ms-1"></i>
+							</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+
+			<div class="navbar-collapse justify-content-center flex-lg-1 order-2 order-lg-1 collapse" id="navbar_search">
+				<div class="navbar-search flex-fill position-relative mt-2 mt-lg-0 mx-lg-3">
+					<div class="form-control-feedback form-control-feedback-start flex-grow-1" data-color-theme="dark">
+						<input type="text" class="form-control bg-transparent rounded-pill" placeholder="Search" data-bs-toggle="dropdown">
+						<div class="form-control-feedback-icon">
+							<i class="ph-magnifying-glass"></i>
+						</div>
+						<div class="dropdown-menu w-100" data-color-theme="light">
+							<button type="button" class="dropdown-item">
+								<div class="text-center w-32px me-3">
+									<i class="ph-magnifying-glass"></i>
+								</div>
+								<span>Search <span class="fw-bold">"in"</span> everywhere</span>
+							</button>
+
+							<div class="dropdown-divider"></div>
+
+							<div class="dropdown-menu-scrollable-lg">
+						</div>
+						</div>
+					</div>
+
+					<a href="#" class="navbar-nav-link align-items-center justify-content-center w-40px h-32px rounded-pill position-absolute end-0 top-50 translate-middle-y p-0 me-1" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+						<i class="ph-faders-horizontal"></i>
+					</a>
+
+					<div class="dropdown-menu w-100 p-3">
+						<div class="d-flex align-items-center mb-3">
+							<h6 class="mb-0">Search options</h6>
+							
+						</div>
+
+						<div class="mb-3">
+							<label class="d-block form-label">Category</label>
+							<label class="form-check form-check-inline">
+								<input type="checkbox" class="form-check-input" checked>
+								<span class="form-check-label">Teams</span>
+							</label>
+							<label class="form-check form-check-inline">
+								<input type="checkbox" class="form-check-input">
+								<span class="form-check-label">Files</span>
+							</label>
+							<label class="form-check form-check-inline">
+								<input type="checkbox" class="form-check-input">
+								<span class="form-check-label">Users</span>
+							</label>
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">Addition</label>
+							<div class="input-group">
+								<select class="form-select w-auto flex-grow-0">
+									<option value="1" selected>has</option>
+									<option value="2">has not</option>
+								</select>
+								<input type="text" class="form-control" placeholder="Enter the word(s)">
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">Status</label>
+							<div class="input-group">
+								<select class="form-select w-auto flex-grow-0">
+									<option value="1" selected>is</option>
+									<option value="2">is not</option>
+								</select>
+								<select class="form-select">
+									<option value="1" selected>Active</option>
+									<option value="2">Inactive</option>
+									<option value="3">New</option>
+									<option value="4">Expired</option>
+									<option value="5">Pending</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="d-flex">
+							<button type="button" class="btn btn-light">Reset</button>
+
+							<div class="ms-auto">
+								<button type="button" class="btn btn-light">Cancel</button>
+								<button type="button" class="btn btn-primary ms-2">Apply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<ul class="nav flex-row justify-content-end order-1 order-lg-2">
+				<li class="nav-item ms-lg-2">
+					<a href="#" class="navbar-nav-link navbar-nav-link-icon rounded-pill" data-bs-toggle="offcanvas" data-bs-target="#notifications">
+						<i class="ph-bell"></i>
+						<span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">2</span>
+					</a>
+				</li>
+
+				<li class="nav-item nav-item-dropdown-lg dropdown ms-lg-2">
+					<a href="#" class="navbar-nav-link align-items-center rounded-pill p-1" data-bs-toggle="dropdown">
+						<div class="status-indicator-container">
+							<!--<img src="" class="w-32px h-32px rounded-pill" alt="user image">-->
+							
+							<span class="status-indicator bg-success"></span>
+						</div>
+						<span class="d-none d-lg-inline-block mx-lg-2">S. Nikhil</span>
+					</a>
+
+					<div class="dropdown-menu dropdown-menu-end">
+						<a href="#" class="dropdown-item">
+							<i class="ph-user-circle me-2"></i>
+							My profile
+						</a>
+						
+						<a href="#" class="dropdown-item">
+							<i class="ph-sign-out me-2"></i>
+							Logout
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+	<!-- Page content -->
+	<div class="page-content">
+
+		<!-- Main sidebar -->
+		<div class="sidebar sidebar-dark sidebar-main sidebar-expand-lg">
+
+			<!-- Sidebar content -->
+			<div class="sidebar-content">
+
+				<!-- Sidebar header -->
+				<div class="sidebar-section">
+					<div class="sidebar-section-body d-flex justify-content-center">
+						<h5 class="sidebar-resize-hide flex-grow-1 my-auto">Navigation</h5>
+
+						<div>
+							<button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-control sidebar-main-resize d-none d-lg-inline-flex">
+								<i class="ph-arrows-left-right"></i>
+							</button>
+
+							<button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-mobile-main-toggle d-lg-none">
+								<i class="ph-x"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<!-- /sidebar header -->
+
+
+				<!-- Main navigation -->
+				<div class="sidebar-section">
+					<ul class="nav nav-sidebar" data-nav-type="accordion">
+
+						<!-- Main -->
+						<li class="nav-item-header pt-0">
+							<div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">Main</div>
+							<i class="ph-dots-three sidebar-resize-show"></i>
+						</li>
+						<li class="nav-item">
+							<a href="index.html" class="nav-link">
+								<i class="ph-house"></i>
+								<span>
+									Dashboard
+								</span>
+							</a>
+						</li>
+						<!-- Tables -->
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link">
+								<i class="ph-square-half-bottom"></i>
+								<span>TAT Report</span>
+							</a>
+							<ul class="nav-group-sub collapse show">
+								<li class="nav-item nav-item-submenu">
+									<a href="gridjs_advanced.html" class="nav-link active">IOA/IHA</a>
+									<ul class="nav-group-sub collapse">
+										<li class="nav-item"><a href="https://app.powerbi.com/groups/373c6c69-f99e-48de-9068-0f92fb3b5d9d/reports/0ad148ba-d19b-469e-9fe2-dcb95ee62262?ctid=db05faca-c82a-4b9d-b9c5-0f64b6755421&pbi_source=linkShare" target="_blank" class="nav-link">Sqoop TAT(May-June)</a></li>
+										<li class="nav-item"><a href="https://app.powerbi.com/groups/373c6c69-f99e-48de-9068-0f92fb3b5d9d/reports/2be5e5ea-013a-4715-9bc6-29401d2768e4?ctid=db05faca-c82a-4b9d-b9c5-0f64b6755421&pbi_source=linkShar " target="_blank" class="nav-link">Sqoop TAT(June-July)</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Deltaload time</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">CPU Usage</a></li>
+										<li class="nav-item"><a href="#" class="nav-link">Coming soon</a></li>
+									</ul>
+								</li>
+					<!----			<li class="nav-item"><a href="gridjs_advanced.html" class="nav-link active">IOA/IHA</a></li>-->
+								<li class="nav-item"><a href="#" class="nav-link disabled">CHART <span class="badge align-self-center ms-auto">Coming soon</span></a></li>
+								<li class="nav-item"><a href="#" class="nav-link disabled">CDNA <span class="badge align-self-center ms-auto">Coming soon</span></a></li>
+								<li class="nav-item"><a href="#" class="nav-link disabled">SMMR <span class="badge align-self-center ms-auto">Coming soon</span></a></li>
+							</ul>
+						</li>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link">
+								<i class="ph-note-blank"></i>
+								<span>Bundle Track Report</span>
+							</a>
+							<ul class="nav-group-sub collapse">
+								<li class="nav-item"><a href="#" class="nav-link">Static layout</a></li>
+								<li class="nav-item"><a href="#" class="nav-link">No header</a></li>
+								<li class="nav-item"><a href="#" class="nav-link">No footer</a></li>
+								<li class="nav-item-divider"></li>
+								<li class="nav-item"><a href="#" class="nav-link">Fixed header</a></li>
+								<li class="nav-item"><a href="#" class="nav-link">Fixed footer</a></li>
+								<li class="nav-item-divider"></li>
+								<li class="nav-item"><a href="#" class="nav-link">2 sidebars on 2 sides</a></li>
+								<li class="nav-item"><a href="" class="nav-link">3 sidebars</a></li>
+								<li class="nav-item-divider"></li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a href="https://app.powerbi.com/groups/373c6c69-f99e-48de-9068-0f92fb3b5d9d/dashboards/71246b1c-26ee-4afe-8a8a-a11fe08ebfe3?experience=power-bi" class="nav-link" target="_blank">
+								<i class="ph-list-numbers"></i>
+								<span>Infra Cost Analysis</span>
+								
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<i class="ph-list-numbers"></i>
+								<span>Infra Cost Forecast</span>
+								
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="SubClientInfo.html" class="nav-link">
+								<i class="ph-list-numbers"></i>
+								<span>Sub Client Info</span>
+								
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="https://uhgazure.sharepoint.com/sites/Sparq-Online/_layouts/15/search.aspx/people?q=opsi%20devops" target="_blank" class="nav-link">
+								<i class="ph-list-numbers"></i>
+								<span>Meet the Team</span>
+								
+							</a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- /main navigation -->
+
+			</div>
+			<!-- /sidebar content -->
+			
+		</div>
+		<!-- /main sidebar -->
+
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Inner content -->
+			<div class="content-inner">
+
+				<!-- Page header -->
+				<div class="page-header page-header-light shadow">
+					<div class="page-header-content d-lg-flex">
+						<div class="d-flex">
+							<h4 class="page-title mb-0">
+								Sub Client Info<span class="fw-normal"></span>
+							</h4>
+
+							<a href="#page_header" class="btn btn-light align-self-center collapsed d-lg-none border-transparent rounded-pill p-0 ms-auto" data-bs-toggle="collapse">
+								<i class="ph-caret-down collapsible-indicator ph-sm m-1"></i>
+							</a>
+						</div>
+
+						<div class="collapse d-lg-block my-lg-auto ms-lg-auto" id="page_header">
+							<div class="d-sm-flex align-items-center mb-3 mb-lg-0 ms-lg-3">
+								
+
+								<div class=" d-none d-sm-block flex-shrink-0 my-2 mx-3"></div>								
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+				<!-- /page header -->
+
+
+				<!-- Content area -->
+				<div class="content">
+
+					<!-- Events -->
+					<div class="card">
+						<div class="card-header">
+							<h5 class="mb-0">OPSI Daily Process Status</h5>
+						</div>
+						<div class="card-body">
+							<span class="fw-semibold col-lg-8 offset-lg-6">MA Clients</span>
+						</div>
+
+						<table class="table datatable-basic">
+							<thead>
+								<tr>
+									<th>Client Name</th>
+									<th>Program</th>
+									<th>Sub_cli_sk</th>
+									<th>CS Load Complete date</th>
+									<th>Sqoop Start									</th>
+									<th>sqoop end</th>
+									<th>Delta lake start</th>
+									<th>Delta lake end</th>
+									<th>Analytics start</th>
+									<th>Analytics end</th>
+									<th>Report review</th>
+									<th>Runids Shared with PAFx</th>
+									<th>Analtyics generated to CS</th>
+									<th>Process Complete</th>
+									<th class="text-center">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>UHG -Cosmos</td>
+									<td><a href="#">IOA</a></td>
+									<td>6</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Aetna Medicare</td>
+									<td><a href="#">IOA</a></td>
+									<td>10</td>
+									<td>11/19/2023</td>
+									<td>11/19/2023</td>
+									<td>11/21/2023</td>
+									<td>11/21/2023</td>
+									<td>11/21/2023</td>
+									<td>11/21/2023</td>
+									<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UCare</td>
+									<td><a href="#">IOA</a></td>
+									<td>11</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/11/2023</td>
+									<td>11/12/2023</td>
+									<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Elderplan</td>
+									<td><a href="#">IOA</a></td>
+									<td>14</td>
+									<td>11/9/2023</td>
+									<td>11/10/2023</td>
+									<td>11/11/2023</td>
+									<td>11/11/2023</td>
+									<td>11/11/2023</td>
+									<td>11/11/2023</td>
+									<td>11/12/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHG -Facets</td>
+									<td><a href="#">IOA</a></td>
+									<td>22</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHG -Pacificare</td>
+									<td><a href="#">IOA</a></td>
+									<td>33</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Humana</td>
+									<td><a href="#">IOA</a></td>
+									<td>85</td>
+									<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Paramount</td>
+									<td><a href="#">IOA</a></td>
+									<td>88</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Elevance</td>
+									<td><a href="#">IOA</a></td>
+									<td>91</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Pacificsource</td>
+									<td><a href="#">IOA</a></td>
+									<td>113</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Health Plan of CareOregon</td>
+									<td><a href="#">IOA</a></td>
+									<td>126</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>CENTENE MA</td>
+									<td><a href="#">IOA</a></td>
+									<td>170</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>CENTENE MMP</td>
+									<td><a href="#">IOA</a></td>
+									<td>171</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Ascension</td>
+									<td><a href="#">IOA</a></td>
+									<td>3641319</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Centene WellCare</td>
+									<td><a href="#">IOA</a></td>
+									<td>25448338</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+									<td>11/15/2023</td>
+									<td>11/15/2023</td>
+									<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<span class="fw-semibold col-lg-8 offset-lg-6">ACA Clients</span>
+						</div>
+
+						<table class="table datatable-basic">
+						<thead>
+							<tr>
+								<th>Client Name</th>
+									<th>Program</th>
+									<th>Sub_cli_sk</th>
+									<th>CS Load Complete date</th>
+									<th>Sqoop Start									</th>
+									<th>sqoop end</th>
+									<th>Delta lake start</th>
+									<th>Delta lake end</th>
+									<th>Analytics start</th>
+									<th>Analytics end</th>
+									<th>Report review</th>
+									<th>Runids Shared with PAFx</th>
+									<th>Analtyics generated to CS</th>
+									<th>Process Complete</th>
+									<th class="text-center">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Health Net CRA</td>
+									<td><a href="#">IOA</a></td>
+									<td>87</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+								<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>PacificSource ACA</td>
+									<td><a href="#">IOA</a></td>
+									<td>114</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+								<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>UHG E&I UAC</td>
+									<td><a href="#">IOA/IHA</a></td>
+									<td>160</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+								<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>UCare ACA</td>
+									<td><a href="#">IOA</a></td>
+									<td>169</td>
+									<td>11/8/2023</td>
+									<td>11/8/2023</td>
+									<td>11/10/2023</td>
+									<td>11/10/2023</td>
+									<td>11/13/2023</td>
+									<td>11/13/2023</td>
+								<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr><td>Tufts ACA</td>
+								<td><a href="#">IHA</a></td>
+								<td>197</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>MolinaACA</td>
+								<td><a href="#"></a></td>
+								<td>2047635</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr><td>MMO ACA</td>
+								<td><a href="#">IOA</a></td>
+								<td>5051710</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Fidelis CM ACA</td>
+								<td><a href="#">IOA</a></td>
+								<td>39774994</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Humana CRA ACA</td>
+								<td><a href="#">IOA</a></td>
+								<td>48577868</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Qualchoice ACA</td>
+								<td><a href="#">IOA</a></td>
+								<td>58234639</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Aetna ACA</td>
+								<td><a href="#">IOA</a></td>
+								<td>81516034</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>SANFORDHEALTH ACA</td>
+								<td><a href="#">IOA</a></td>
+								<td>83527958</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Centene CM</td>
+								<td><a href="#">IOA</a></td>
+								<td>87766472</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Aspirus ACA</td>
+								<td><a href="#">Non-IOA</a></td>
+								<td>99032571</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Preferred One ACA</td>
+								<td><a href="#">Non-IOA</a></td>
+								<td>94</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>11/10/2023</td>
+								<td>11/10/2023</td>
+								<td>11/13/2023</td>
+								<td>11/13/2023</td>
+								<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+								<td class="text-center">
+									<div class="d-inline-flex">
+										<div class="dropdown">
+											<a href="#" class="text-body" data-bs-toggle="dropdown">
+												<i class="ph-list"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-end">
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-pdf me-2"></i>
+													Export to .pdf
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-xls me-2"></i>
+													Export to .csv
+												</a>
+												<a href="#" class="dropdown-item">
+													<i class="ph-file-doc me-2"></i>
+													Export to .doc
+												</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+						</table>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<span class="fw-semibold col-lg-8 offset-lg-6">MEDICARE Clients</span>
+						</div>
+	
+						<table class="table datatable-basic">
+							<thead>
+								<tr>
+									<th>Client Name</th>
+									<th>Program</th>
+									<th>Sub_cli_sk</th>
+									<th>CS Load Complete date</th>
+									<th>Sqoop Start									</th>
+									<th>sqoop end</th>
+									<th>Delta lake start</th>
+									<th>Delta lake end</th>
+									<th>Analytics start</th>
+									<th>Analytics end</th>
+									<th>Report review</th>
+									<th>Runids Shared with PAFx</th>
+									<th>Analtyics generated to CS</th>
+									<th>Process Complete</th>
+									<th class="text-center">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>UHC Medicaid AZ</td>
+								<td><a href="#">IOA</a></td>
+								<td>138</td>
+								<td>11/8/2023</td>
+								<td>11/8/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid FL</td>
+								<td><a href="#">IOA</a></td>
+								<td>140</td>
+								<td>11/14/2023</td>
+								<td>11/14/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+								<td>11/15/2023</td>
+								<td>11/16/2023</td>
+								<td>11/17/2023</td>
+								<td>11/21/2023</td>
+									<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid KS</td>
+								<td><a href="#">IOA</a></td>
+								<td>142</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+								<td>11/15/2023</td>
+									<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid LA</td>
+								<td><a href="#">IOA</a></td>
+								<td>143</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+								<td>11/15/2023</td>
+									<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid MD</td>
+								<td><a href="#">IOA</a></td>
+								<td>145</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+								<td>11/15/2023</td>
+									<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid MI</td>
+									<td><a href="#">IOA</a></td>
+									<td>146</td>
+									<td>11/14/2023</td>
+									<td>11/15/2023</td>
+									<td>NA</td>
+									<td>NA</td>
+									<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid NJ</td>
+								<td><a href="#">IOA</a></td>
+								<td>148</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid NY</td>
+								<td><a href="#">IOA</a></td>
+								<td>150</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid OH</td>
+								<td><a href="#">IOA</a></td>
+								<td>151</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid PA</td>
+								<td><a href="#">IOA</a></td>
+								<td>152</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid TN</td>
+								<td><a href="#">IOA</a></td>
+								<td>154</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid WA</td>
+								<td><a href="#">IOA</a></td>
+								<td>155</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-secondary bg-opacity-10 text-secondary">Inactive</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid WI</td>
+								<td><a href="#">IOA</a></td>
+								<td>156</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-success bg-opacity-10 text-success">Active</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid RI</td>
+								<td><a href="#">IOA</a></td>
+								<td>476512</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-danger bg-opacity-10 text-danger">Suspended</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>UHC Medicaid VA</td>
+								<td><a href="#">IOA</a></td>
+								<td>6076596</td>
+								<td>11/14/2023</td>
+								<td>11/15/2023</td>
+								<td>NA</td>
+								<td>NA</td>
+									<td><span class="badge bg-info bg-opacity-10 text-info">Pending</span></td>
+									<td class="text-center">
+										<div class="d-inline-flex">
+											<div class="dropdown">
+												<a href="#" class="text-body" data-bs-toggle="dropdown">
+													<i class="ph-list"></i>
+												</a>
+	
+												<div class="dropdown-menu dropdown-menu-end">
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-pdf me-2"></i>
+														Export to .pdf
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-xls me-2"></i>
+														Export to .csv
+													</a>
+													<a href="#" class="dropdown-item">
+														<i class="ph-file-doc me-2"></i>
+														Export to .doc
+													</a>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+						<div class="gridjs-example-events border-top"></div>
+					</div>
+					<!-- /events -->
+
+				</div>
+				<!-- /content area -->
+
+
+				<!-- Footer -->
+				<div class="navbar navbar-sm navbar-footer border-top">
+					<div class="container-fluid">
+						
+						<ul class="nav">
+							<li class="nav-item">
+									<div class="d-flex align-items-center mx-md-1">
+										<i class="ph-lifebuoy"></i>
+										<span class="d-none d-md-inline-block ms-2">Support</span>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item ms-md-1">
+									<div class="d-flex align-items-center mx-md-1">
+										<i class="ph-file-text"></i>
+										<span class="d-none d-md-inline-block ms-2">Docs</span>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item ms-md-1">
+																	<div class="d-flex align-items-center mx-md-1">
+										<i class="ph-shopping-cart"></i>
+										
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /footer -->
+
+			</div>
+			<!-- /inner content -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+
+	<!-- Notifications -->
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="notifications">
+		<div class="offcanvas-header py-0">
+			<h5 class="offcanvas-title py-3">Activity</h5>
+			<button type="button" class="btn btn-light btn-sm btn-icon border-transparent rounded-pill" data-bs-dismiss="offcanvas">
+				<i class="ph-x"></i>
+			</button>
+		</div>
+
+		<div class="offcanvas-body p-0">
+		</div>
+	</div>
+	<!-- /notifications -->
+
+
+	<!-- Demo config -->
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="demo_config">
+		<div class="position-absolute top-50 end-100 visible">
+	</div>
+
+		<div class="offcanvas-header border-bottom py-0">
+			<h5 class="offcanvas-title py-3">Demo configuration</h5>
+			<button type="button" class="btn btn-light btn-sm btn-icon border-transparent rounded-pill" data-bs-dismiss="offcanvas">
+				<i class="ph-x"></i>
+			</button>
+		</div>
+
+		<div class="offcanvas-body">
+			<div class="fw-semibold mb-2">Color mode</div>
+			<div class="list-group mb-3">
+				<label class="list-group-item list-group-item-action form-check border-width-1 rounded mb-2">
+					<div class="d-flex flex-fill my-1">
+						<div class="form-check-label d-flex me-2">
+							<i class="ph-sun ph-lg me-3"></i>
+							<div>
+								<span class="fw-bold">Light theme</span>
+								<div class="fs-sm text-muted">Set light theme or reset to default</div>
+							</div>
+						</div>
+						<input type="radio" class="form-check-input cursor-pointer ms-auto" name="main-theme" value="light" checked>
+					</div>
+				</label>
+
+				<label class="list-group-item list-group-item-action form-check border-width-1 rounded mb-2">
+					<div class="d-flex flex-fill my-1">
+						<div class="form-check-label d-flex me-2">
+							<i class="ph-moon ph-lg me-3"></i>
+							<div>
+								<span class="fw-bold">Dark theme</span>
+								<div class="fs-sm text-muted">Switch to dark theme</div>
+							</div>
+						</div>
+						<input type="radio" class="form-check-input cursor-pointer ms-auto" name="main-theme" value="dark">
+					</div>
+				</label>
+
+				<label class="list-group-item list-group-item-action form-check border-width-1 rounded mb-0">
+					<div class="d-flex flex-fill my-1">
+						<div class="form-check-label d-flex me-2">
+							<i class="ph-translate ph-lg me-3"></i>
+							<div>
+								<span class="fw-bold">Auto theme</span>
+								<div class="fs-sm text-muted">Set theme based on system mode</div>
+							</div>
+						</div>
+						<input type="radio" class="form-check-input cursor-pointer ms-auto" name="main-theme" value="auto">
+					</div>
+				</label>
+			</div>
+
+			<div class="fw-semibold mb-2">Direction</div>
+			<div class="list-group mb-3">
+				<label class="list-group-item list-group-item-action form-check border-width-1 rounded mb-0">
+					<div class="d-flex flex-fill my-1">
+						<div class="form-check-label d-flex me-2">
+							<i class="ph-translate ph-lg me-3"></i>
+							<div>
+								<span class="fw-bold">RTL direction</span>
+								<div class="text-muted">Toggle between LTR and RTL</div>
+							</div>
+						</div>
+						<input type="checkbox" name="layout-direction" value="rtl" class="form-check-input cursor-pointer m-0 ms-auto">
+					</div>
+				</label>
+			</div>
+
+			<div class="fw-semibold mb-2">Layouts</div>
+			<div class="row">
+				<div class="col-12">
+					<a href="index.html" class="d-block mb-3">
+						<img src="../../../../../assets/images/layouts/layout_1.png" class="img-fluid img-thumbnail bg-primary bg-opacity-20 border-primary" alt="">
+					</a>
+				</div>
+				<div class="col-12">
+					<a href="" class="d-block mb-3">
+						<img src="../../../../../assets/images/layouts/layout_2.png" class="img-fluid img-thumbnail" alt="">
+					</a>
+				</div>
+				<div class="col-12">
+					<a href="" class="d-block mb-3">
+						<img src="../../../../../assets/images/layouts/layout_3.png" class="img-fluid img-thumbnail" alt="">
+					</a>
+				</div>
+				<div class="col-12">
+					<a href="" class="d-block mb-3">
+						<img src="../../../../../assets/images/layouts/layout_4.png" class="img-fluid img-thumbnail" alt="">
+					</a>
+				</div>
+				<div class="col-12">
+					<a href="" class="d-block mb-3">
+						<img src="../../../../../assets/images/layouts/layout_5.png" class="img-fluid img-thumbnail" alt="">
+					</a>
+				</div>
+				<div class="col-12">
+					<a href="" class="d-block">
+						<img src="../../../../../assets/images/layouts/layout_6.png" class="img-fluid img-thumbnail" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="border-top text-center py-2 px-3">
+			<a href="" class="btn btn-yellow fw-semibold w-100 my-1" target="_blank">
+				<i class="ph-shopping-cart me-2"></i>
+				Purchase Limitless
+			</a>
+		</div>
+	</div>
+	<!-- /demo config -->
+
+</body>
+
+</html>
